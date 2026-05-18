@@ -3,6 +3,7 @@
 import { useState, useEffect } from 'react'
 import { usePathname } from 'next/navigation'
 import Link from 'next/link'
+import Image from 'next/image'
 import {
   LayoutDashboard,
   FileText,
@@ -136,7 +137,9 @@ function SectionLabel({ label, collapsed }: { label?: string; collapsed?: boolea
 
 function Logo() {
   return (
-    <div className="px-3 mb-7">
+    <div className="flex px-3 mb-7">
+      <Image src="/logo.png" alt="Logo" width={50} height={30} />
+      <div className="w-full">
       <div className="flex items-baseline gap-0.5">
         <span className="text-xl font-bold" style={{ color: 'var(--text-primary)' }}>Lend</span>
         <span className="text-xl font-bold" style={{ color: 'var(--accent-green)' }}>Flow</span>
@@ -144,6 +147,7 @@ function Logo() {
       <p className="text-xs font-semibold tracking-widest uppercase mt-0.5" style={{ color: 'var(--text-muted)' }}>
         Loan Management
       </p>
+      </div>
     </div>
   )
 }
@@ -177,7 +181,7 @@ function DesktopSidebar({ pathname }: { pathname: string }) {
       style={{
         display: 'flex',
         flexDirection: 'column',
-        width: '224px',
+        width: '254px',
         height: '100vh',
         flexShrink: 0,
         padding: '20px 12px',
