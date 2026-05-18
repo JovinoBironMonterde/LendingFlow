@@ -63,7 +63,7 @@ export default function SettingsPage() {
 
       {/* Main content */}
       <div className="flex-1 overflow-y-auto px-8 py-6">
-        <div className="max-w-2xl space-y-3 mb-10">
+        <div className="space-y-3 mb-10">
 
           {/* Profile */}
           {activeSection === 'profile' && (

@@ -1,5 +1,9 @@
 @import "tailwindcss";
 
+@source "../app/**/*.{js,ts,jsx,tsx}";
+@source "../components/**/*.{js,ts,jsx,tsx}";
+@source "../pages/**/*.{js,ts,jsx,tsx}";
+
 :root {
   --sidebar: #0f1923;
   --sidebar-hover: #1a2535;

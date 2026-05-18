@@ -5,20 +5,23 @@ import StatCard from './components/StatCard'
 import LoanTable from './components/LoanTable'
 import DisbursementsChart from './components/DisbursementsChart'
 import AlertsPanel from './components/AlertsPanel'
+import { useCurrentDate } from './components/useCurrentDate'
 
 export default function Dashboard() {
+  const { dateLabel, quarter } = useCurrentDate()
+
   return (
-    <div className=" h-screen overflow-y-auto mb-40" style={{ backgroundColor: 'var(--main-bg)' }}>
+    <div className=" h-screen overflow-y-auto " style={{ backgroundColor: 'var(--main-bg)' }}>
       {/* Main content */}
       <main className="flex-1 flex flex-col overflow-hidden">
         {/* Top header */}
-        <header className="flex items-center justify-between px-8 py-5 shrink-0" style={{ borderBottom: '1px solid rgba(255,255,255,0.05)' }}>
+        <header className="flex items-center justify-between p-4 lg:px-8 lg:py-5 shrink-0" style={{ borderBottom: '1px solid rgba(255,255,255,0.05)' }}>
           <div>
             <h1 className="text-2xl font-bold" style={{ color: 'var(--text-primary)' }}>
               Dashboard
             </h1>
             <p className="text-sm mt-0.5" style={{ color: 'var(--text-muted)' }}>
-              Saturday, May 16, 2026 — Q2 Performance
+              {dateLabel} — {quarter} Performance
             </p>
           </div>
 
@@ -35,7 +38,7 @@ export default function Dashboard() {
               onMouseLeave={e => (e.currentTarget.style.backgroundColor = 'rgba(255,255,255,0.06)')}
             >
               <Download size={15} />
-              Export
+              <span className='hidden lg:block'>Export</span>
             </button>
 
             {/* New Loan button */}
@@ -49,13 +52,13 @@ export default function Dashboard() {
               onMouseLeave={e => (e.currentTarget.style.backgroundColor = 'var(--accent-green)')}
             >
               <Plus size={15} strokeWidth={2.5} />
-              New Loan
+              <span className='hidden lg:block'>New Loan</span>
             </button>
           </div>
         </header>
 
         {/* Scrollable content */}
-        <div className="flex-1 overflow-y-auto px-4 md:px-8 py-6">
+        <div className="flex-1 overflow-y-auto  p-4 md:px-8 md:py-6">
           {/* Stat Cards */}
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">
             <StatCard
@@ -98,7 +101,7 @@ export default function Dashboard() {
           </div>
 
           {/* Bottom row */}
-          <div className="grid grid-cols-2 gap-4 pb-4">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 pb-4">
             <DisbursementsChart />
             <AlertsPanel />
           </div>
